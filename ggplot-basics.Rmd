@@ -1,6 +1,6 @@
 ---
 title: "Overview of basic features of ggplot"
-author: "Caleb Trujillo"
+author: "Xavier Le"
 date: "`r Sys.Date()`"
 output: html_document
 ---
