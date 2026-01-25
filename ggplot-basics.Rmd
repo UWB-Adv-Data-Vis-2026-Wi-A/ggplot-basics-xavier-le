@@ -21,14 +21,8 @@ Here you will make your figure. You can write a commit for each figure or error 
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y = lifeExp))
-p + geom_point(alpha = .3) +
-  geom_smooth(method = 'gam') +
-  scale_x_log10(labels = scales::dollar) +
-  labs(title = "Economic Growth and Life Expectancy",
-       subtitle = "Data points are country-years",
-       x = "GDP per Capita",
-       y = "Life Expectancy in Years",
-       caption = "Source: Gapminder.")
+p + geom_point()+
+  geom_smooth()
 ```
 
 ### Figure 3.16
@@ -38,10 +32,10 @@ Here you will make your next figure.
 ```{r 3.16 plot}
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
-                          y = lifeExp))
-p + geom_smooth(method = 'loess') +
-  geom_point(aes(color = continent)) +
-  scale_x_log10()
+                          y = lifeExp,
+                          color = continent,
+                          fill = lifeExp))
+p + geom_smooth()
 ```
 
 
