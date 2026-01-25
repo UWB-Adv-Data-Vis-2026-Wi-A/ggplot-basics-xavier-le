@@ -23,7 +23,7 @@ p <- ggplot(data = gapminder,
                           y = lifeExp))
 p + geom_point()+
   geom_smooth(method = 'gam')+
-  scale_x_log10(labels = scales::dollar) 
+  scale_x_log10(labels = scales::dollar)
 ```
 
 ### Figure 3.16
