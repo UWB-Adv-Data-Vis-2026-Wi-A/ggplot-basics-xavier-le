@@ -8,9 +8,6 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 pacman::p_load(tidyverse,nycflights13,gapminder,socviz)
-
-gapminder <- gapminder
-
 ```
 
 ### Figure 3.13
@@ -39,8 +36,8 @@ Here you will make your next figure.
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y = lifeExp))
-p + geom_point(aes(color = continent)) +
-  geom_smooth(method = 'loess') +
+p + geom_point(aes(color = continent))+
+  geom_smooth(method = 'loess')+
   scale_x_log10()
 ```
 
@@ -51,4 +48,15 @@ Continue practicing by accessing an unfamiliar data set from another package.
 You can load a dataset of your choice to show you can build a graphic using ggplot layers.
 Here are some sample data sets [https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html)
 
+```{r}
 
+p <- ggplot(data = flights, aes(x = distance,
+                              y = air_time))
+p + geom_point(alpha = .25)+
+  geom_smooth(method = 'gam')+
+  scale_x_log10()+
+  labs(title = "Flight Distances vs. Air Time",
+       subtitle = "Each data point represents one flight",
+       x = "Distance (Miles)",
+       y = "Air Time (Minutes)")
+```
