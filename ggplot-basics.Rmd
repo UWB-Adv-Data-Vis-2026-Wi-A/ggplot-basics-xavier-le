@@ -29,7 +29,6 @@ p + geom_point(alpha = .3) +
        x = "GDP per Capita",
        y = "Life Expectancy in Years",
        caption = "Source: Gapminder.")
-
 ```
 
 ### Figure 3.16
@@ -39,10 +38,10 @@ Here you will make your next figure.
 ```{r 3.16 plot}
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
-                          y = lifeExp,
-                          color = continent,
-                          fill = lifeExp))
-p + geom_smooth()
+                          y = lifeExp))
+p + geom_smooth(method = 'loess') +
+  geom_point(aes(color = continent)) +
+  scale_x_log10()
 ```
 
 
