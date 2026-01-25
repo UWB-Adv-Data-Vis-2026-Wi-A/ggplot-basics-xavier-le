@@ -39,7 +39,8 @@ Here you will make your next figure.
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y = lifeExp,
-                          color = continent))
+                          color = continent,
+                          fill = continent))
 p + geom_point()+
   geom_smooth(method = 'loess')+
   scale_x_log10() 
