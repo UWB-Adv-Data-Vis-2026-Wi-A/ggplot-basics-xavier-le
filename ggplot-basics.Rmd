@@ -23,7 +23,12 @@ p <- ggplot(data = gapminder,
                           y = lifeExp))
 p + geom_point()+
   geom_smooth(method = 'gam')+
-  scale_x_log10()
+  scale_x_log10(labels = scales::dollar)+
+  labs(title = "Economic Growth and Life Expectancy",
+       subtitle = "Data points are country-years",
+       x = "GDP Per Capita",
+       y = "Life Expectancy in Years",
+       caption = "Source: Gapminder.")
 ```
 
 ### Figure 3.16
