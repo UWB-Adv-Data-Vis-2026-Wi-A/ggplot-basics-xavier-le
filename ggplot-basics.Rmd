@@ -1,6 +1,6 @@
 ---
 title: "Overview of basic features of ggplot"
-author: "Caleb Trujillo"
+author: "Xavier Le"
 date: "`r Sys.Date()`"
 output: html_document
 ---
@@ -15,12 +15,17 @@ pacman::p_load(tidyverse,nycflights13,gapminder,socviz)
 Here you will make your figure. You can write a commit for each figure or error leading up to the figure that matches. Be sure to include commits of the transitions and name the figures such as "Recreating Figure 3.4" and "Recreating Figure 3.7". Practicing frequent commits is a great habit.
 
 ```{r 3.13 plot}
-
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y = lifeExp))
-p + geom_point() 
-
+p + geom_point()+
+  geom_smooth(method = 'gam')+
+  scale_x_log10(labels = scales::dollar)+
+  labs(title = "Economic Growth and Life Expectancy",
+       subtitle = "Data points are country-years",
+       x = "GDP Per Capita",
+       y = "Life Expectancy in Years",
+       caption = "Source: Gapminder.")
 ```
 
 ### Figure 3.16
@@ -30,10 +35,10 @@ Here you will make your next figure.
 ```{r 3.16 plot}
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
-                          y = lifeExp,
-                          color = continent,
-                          fill = lifeExp))
-p + geom_smooth()
+                          y = lifeExp))
+p + geom_point(aes(color = continent))+
+  geom_smooth(method = 'loess')+
+  scale_x_log10()
 ```
 
 
@@ -43,4 +48,15 @@ Continue practicing by accessing an unfamiliar data set from another package.
 You can load a dataset of your choice to show you can build a graphic using ggplot layers.
 Here are some sample data sets [https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html)
 
+```{r}
 
+p <- ggplot(data = flights, aes(x = distance,
+                              y = air_time))
+p + geom_point(alpha = .25)+
+  geom_smooth(method = 'gam')+
+  scale_x_log10()+
+  labs(title = "Flight Distances vs. Air Time",
+       subtitle = "Each data point represents one flight",
+       x = "Distance (Miles)",
+       y = "Air Time (Minutes)")
+```
